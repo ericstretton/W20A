@@ -1,5 +1,6 @@
 import creds
 import mariadb
+from helpers.welcome import welcome
 
 conn = mariadb.connect(
                         user=creds.user,
@@ -10,3 +11,12 @@ conn = mariadb.connect(
                         )
 
 cursor = conn.cursor()
+
+welcome()
+username = input("Username: ")
+
+def blog_interface_loop():
+    pass
+# Two choices
+#Choice number one is to make a new post (insert query)
+#Choice number two is to view all posts (select query)
