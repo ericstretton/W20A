@@ -38,8 +38,12 @@ def run_query(statement, args=None):
         if statement.startswith("SELECT"):
             cursor.execute(statement, args)
             result = cursor.fetchall()
-            print("Total of {} users".format(cursor.rowcount))
-            return result
+            if cursor.rowcount ==1:
+                print("Total of {} users".format(cursor.rowcount))
+                return result
+            else:
+                print("Error selected Username and/or Password is incorrect")
+                exit()
         else:
             cursor.execute(statement, args)
             if cursor.rowcount == 1:

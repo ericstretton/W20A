@@ -1,12 +1,14 @@
 from helpers.createQuery import *
 from helpers.welcome import *
 
-
 welcome()
+
 print("Enter Username")
 username = input("Username: ")
+
 print("Enter Password")
 password = input("Password: ")
+
 def login():
     run_query("SELECT username, password FROM user WHERE username=? and password=?", [username, password])
 login()
