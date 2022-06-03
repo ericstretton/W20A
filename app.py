@@ -10,8 +10,6 @@ password = input("Password: ")
 def login():
     run_query("SELECT username, password FROM user WHERE username=? and password=?", [username, password])
 login()
-def blog_interface_loop():
-    pass
 
 print("What would you like to do in Bloggie today?")
 
