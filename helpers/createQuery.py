@@ -35,14 +35,19 @@ def run_query(statement, args=None):
     
     try:
         (conn, cursor) = connect_db()
-        if statement.startswith("SELECT"):
+        if statement.startswith("SELECT username, content from blog_post"):
+            cursor.execute(statement, args)
+            result = cursor.fetchall()
+            
+            print("Total of {} Comments".format(cursor.rowcount))
+            return result
+        elif statement.startswith("SELECT username, password FROM user WHERE username=? and password=?"):
             cursor.execute(statement, args)
             result = cursor.fetchall()
             if cursor.rowcount ==1:
                 print("Total of {} users".format(cursor.rowcount))
                 return result
             else:
-                print("Error selected Username and/or Password is incorrect")
                 exit()
         else:
             cursor.execute(statement, args)
